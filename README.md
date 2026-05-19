@@ -1,5 +1,128 @@
-## Cara install
-Lakukan composer install jika pertama kali anda menginstall aplikasi ini
+## Cara Install
+
+Ikuti langkah-langkah berikut untuk menjalankan aplikasi Laravel ini di lokal.
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/irvanurhakim93/auto2000-app.git
+```
+
+Masuk ke folder project:
+
+```bash
+cd auto2000-app
+```
+
+---
+
+### 2. Install Dependency PHP
+
+```bash
+composer install
+```
+
+---
+
+### 3. Copy File Environment
+
+Linux / Git Bash:
+
+```bash
+cp .env.example .env
+```
+
+Windows CMD:
+
+```cmd
+copy .env.example .env
+```
+
+---
+
+### 4. Generate Application Key
+
+```bash
+php artisan key:generate
+```
+
+---
+
+### 5. Konfigurasi Database
+
+Buka file `.env` lalu sesuaikan konfigurasi database:
+
+```env
+DB_DATABASE=nama_database
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+---
+
+### 6. Jalankan Migrasi Database
+
+```bash
+php artisan migrate
+```
+
+Jika project memiliki seeder:
+
+```bash
+php artisan migrate --seed
+```
+
+---
+
+### 7. Jalankan Storage Link (Opsional)
+
+```bash
+php artisan storage:link
+```
+
+---
+
+### 8. Install Frontend Dependency
+
+```bash
+npm install
+```
+
+---
+
+### 9. Jalankan Vite Development Server
+
+```bash
+npm run dev
+```
+
+---
+
+### 10. Jalankan Laravel Development Server
+
+```bash
+php artisan serve
+```
+
+Aplikasi akan berjalan di:
+
+```text
+http://127.0.0.1:8000
+```
+
+---
+
+## Requirement
+
+Pastikan perangkat Anda sudah terinstall:
+
+- PHP >= 8.x
+- Composer
+- Node.js & NPM
+- MySQL / MariaDB
+- Apache / Laragon / XAMPP (opsional)
+
+
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
