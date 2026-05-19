@@ -1,0 +1,11 @@
+
+
+role prefix admin buat di route nanti : 
+Route::prefix('document')
+    ->middleware(['auth', 'role:admin'])
+    ->group(function () {
+
+    Route::get('/', [DocumentController::class,'index']);
+    Route::post('/', [DocumentController::class,'storeDoc']);
+
+});
