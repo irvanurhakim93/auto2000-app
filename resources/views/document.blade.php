@@ -25,7 +25,7 @@
 
                 {{-- 🔥 UPLOAD --}}
 
-            @if(auth()->user()->hasRole('admin'))
+                @if(auth()->user()->hasRole('admin'))
 
                 {{-- Debug role info --}}
                 <div class="alert alert-warning">
@@ -96,22 +96,28 @@
                 </form>
 
                 {{-- 🔥 TABLE --}}
-                <table id="myTable" class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Nama Klien</th>
-                            <th>Nama Cabang</th>
-                            <th>Nama TAD</th>
-                            <th>Kategori 1</th>
-                            <th>Kategori 2</th>
-                            <th>Kategori 3</th>
-                            <th>Kondisi</th>
-                            <th>Tanggal Pengerjaan</th>
-                            <th>Jam Pengerjaan</th>
-                            <th>Keterangan</th>
-                        </tr>
-                    </thead>
-                </table>
+                <div class="table-responsive">
+                    <table id="myTable" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Nama Klien</th>
+                                <th>Nama Cabang</th>
+                                <th>Nama TAD</th>
+                                <th>Kategori 1</th>
+                                <th>Kategori 2</th>
+                                <th>Kategori 3</th>
+                                <th>Kondisi</th>
+                                <th>Tanggal Pengerjaan</th>
+                                <th>Jam Pengerjaan</th>
+                                <th>Keterangan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- isi data -->
+                        </tbody>
+                    </table>
+                </div>
+
 
                 {{-- 🔥 DOWNLOAD BUTTON (SUDAH BENAR POSISI) --}}
                 <div class="fab-wrapper">
