@@ -21,49 +21,46 @@ class DocumentController extends Controller
     {
         $query = Document::query();
 
-            // filter tanggal berdasarkan tanggal_pengerjaan
-            if ($request->start_date && $request->end_date) {
+        // filter tanggal
+        if ($request->start_date && $request->end_date) {
+            $query->whereBetween('tanggal_pengerjaan', [
+                $request->start_date,
+                $request->end_date
+            ]);
+        }
 
-                $query->whereBetween('tanggal_pengerjaan', [
-                    $request->start_date,
-                    $request->end_date
-                ]);
-            }
+        // filter cabang
+        if ($request->nama_cabang) {
+            $query->where('nama_cabang', $request->nama_cabang);
+        }
 
-            // filter cabang
-            if ($request->nama_cabang) {
-                $query->where('nama_cabang', $request->nama_cabang);
-            }
+        // filter kondisi
+        if ($request->condition) {
+            $query->where('condition', $request->condition);
+        }
 
-            $dataDocument = $query->get();
+        // ambil data setelah semua filter
+        $dataDocument = $query->get();
 
-            $listCabang = Document::select('nama_cabang')
-                ->distinct()
-                ->orderBy('nama_cabang')
-                ->pluck('nama_cabang');
-            //akhir filter cabang
+        // list cabang
+        $listCabang = Document::select('nama_cabang')
+            ->distinct()
+            ->orderBy('nama_cabang')
+            ->pluck('nama_cabang');
 
-            //filter kondisi
-            if ($request->condition) {
-                $query->where('condition', $request->condition);
-            }
+        // list kondisi
+        $listKondisi = Document::select('condition')
+            ->distinct()
+            ->orderBy('condition')
+            ->pluck('condition');
 
-            $dataDocument = $query->get();
-
-            $listKondisi = Document::select('condition')
-                ->distinct()
-                ->orderBy('condition')
-                ->pluck('condition');
-
-
-            //akhir filter kondisi
-
-            return view('document', compact(
-                'dataDocument',
-                'listCabang',
-                'listKondisi'
-            ));
+        return view('document', compact(
+            'dataDocument',
+            'listCabang',
+            'listKondisi'
+        ));
     }
+
 
     public function storeDoc(Request $request)
     {
