@@ -25,7 +25,16 @@
 
                 {{-- 🔥 UPLOAD --}}
 
-                @if(auth()->user()->hasRole('admin'))
+            @if(auth()->user()->hasRole('admin'))
+
+                {{-- Debug role info --}}
+                <div class="alert alert-warning">
+                    <strong>DEBUG ROLE INFO:</strong><br>
+                    User ID: {{ auth()->id() }} <br>
+                    Roles: {{ implode(',', auth()->user()->getRoleNames()->toArray()) }} <br>
+                    Has Admin? {{ auth()->user()->hasRole('admin') ? 'YA' : 'TIDAK' }}
+                </div>
+
                 <form action="{{ route('document.store') }}" id="uploadForm" method="post" enctype="multipart/form-data">
                     @csrf
                     <input type="file" name="file" id="file" class="form-control" placeholder="Unggah data">
@@ -36,7 +45,9 @@
                         </button>
                     </div>
                 </form>
-                @endif
+
+            @endif
+
 
                 {{-- 🔥 FILTER --}}
                 <form method="GET" action="{{ route('document.index') }}" class="mb-4 mt-3">
